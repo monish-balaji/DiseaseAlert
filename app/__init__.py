@@ -12,7 +12,7 @@ import os
 #load_dotenv(dotenv_path='.env')
 
 def load_config ():
-    with open ('config.yml') as f:
+    with open ('../config.yml') as f:
         config = yaml.load(f)
         return config 
 config = load_config()
