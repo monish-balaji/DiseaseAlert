@@ -1,0 +1,11 @@
+MAPS_API_KEY : AIzaSyD17OTqHh1iI6T_8uSGlO_0SXjymIQJGVU  
+MONGO_URI : mongodb://test:cfdpp2018@ds139722.mlab.com:39722/cfdpp
+COSMOS_DB_URI : mongodb://test:cfdpp2018@ds139722.mlab.com:39722/cfdpp
+# COSMOS_DB_URI : mongodb://diseasewatch:Rk0c5rDvQn2h3qnY1vt11xQbBMuFIDRWO7K96BNZBfA7f7reWeGKzFMJNrfhvAfhCylkgDSLEQVbKXuvgA1Zig==@diseasewatch.documents.azure.com:10255/cfdpp?ssl=true&replicaSet=globaldb
+BING_API_KEY : "ArH5cN8F_zSqowG7_fLpoJrBuZQuC0XY4CwfEiBh3xSJtcfhR7jWRcfPOGu573JD"
+BLOB_STORAGE_KEY : 'zbPMRf5b1ENwHjIkzL++BKdS3Yh2hUQajW5ZBAn+rxgnOPfXa/wopTFApxklBnmCFOpOqbs6RfUXXmxjEEmAwA=='
+ACCOUNT_NAME : 'diseasewatch'
+BLOB_URL_STATIC : 'https://diseasewatch.blob.core.windows.net/static'
+BING_SEARCH_API : '23d5471a5b624988a467382fe1ee3ea4'
+EMAIL_ID: straightouttakengeri@gmail.com
+EMAIL_PASSWORD: wthiskengeri

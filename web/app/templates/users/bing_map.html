@@ -1,0 +1,104 @@
+{% extends "users/base.html" %} {% block body %}
+
+    <script type='text/javascript'
+            src='https://www.bing.com/api/maps/mapcontrol?callback=GetMap'
+            async defer></script>
+    <script type='text/javascript'>
+    function GetMap() {
+        var map = new Microsoft.Maps.Map('#myMap', {
+            credentials: '{{ api }}',
+            center: new Microsoft.Maps.Location({{ current_location.latitude }}, {{ current_location.longitude}})
+        });
+
+        infobox = new Microsoft.Maps.Infobox(map.getCenter(), {
+            visible: false
+        });
+
+        infobox.setMap(map);
+
+        var center = map.getCenter();
+
+        var pin = new Microsoft.Maps.Pushpin(center, { color: 'blue' });
+        pin.metadata = { title : 'Current Location'};
+        Microsoft.Maps.Events.addHandler(pin, 'click', pushpinClicked);
+        map.entities.push(pin);
+
+        var latlongs = JSON.parse('{{ plot_locations | tojson }}');
+        var disease_count = JSON.parse('{{ disease_count | tojson }}');
+        var death_count = JSON.parse('{{ death_count | tojson }}');
+
+        var locs = [];
+        
+        for(var i=0,len = latlongs.length;i<len;i++){
+            
+            var newElement = {}
+            newElement = new Microsoft.Maps.Location(latlongs[i].latitude, latlongs[i].longitude)
+            locs.push(newElement);
+            var temp = latlongs[i].place_id;
+
+            for (var key in disease_count) 
+            {
+                if(key == temp) 
+                    value = disease_count[key]; 
+            }
+
+            for (var key in death_count) 
+            {
+                if(key == temp) 
+                    value2 = disease_count[key]; 
+            }
+
+            var value = JSON.stringify(value); 
+            var value2 = JSON.stringify(value2); 
+            console.log(value2);
+            value = value.replace('{' , '').replace('}', '').replace(/"/g, ''); 
+            if (value2)
+            {  
+                value2 = value2.replace('{' , '').replace('}', '').replace(/"/g, ''); 
+                var pin = new Microsoft.Maps.Pushpin(new Microsoft.Maps.Location(latlongs[i].latitude, latlongs[i].longitude) , { color : 'red'});
+                pin.metadata = {
+                
+                title: latlongs[i].loc_name,
+                description: 'DISEASES:' + value + '\n\nDEATHS:' + value2
+            }
+            }
+            else {
+                
+                var pin = new Microsoft.Maps.Pushpin(new Microsoft.Maps.Location(latlongs[i].latitude, latlongs[i].longitude) , { color : 'red'});
+                pin.metadata = {
+                
+                title: latlongs[i].loc_name,
+                description: 'DISEASES:' + value 
+            }
+            }
+            Microsoft.Maps.Events.addHandler(pin, 'click', pushpinClicked);
+            map.entities.push(pin);
+        }
+        locs.push(center)
+        var bounds = Microsoft.Maps.LocationRect.fromLocations(locs);
+        map.setView({bounds:bounds, padding: 100});
+
+    }
+
+    function pushpinClicked(e) {
+        //Make sure the infobox has metadata to display.
+        if (e.target.metadata) {
+            //Set the infobox options with the metadata of the pushpin.
+            infobox.setOptions({
+                location: e.target.getLocation(),
+                title: e.target.metadata.title,
+                description: e.target.metadata.description,
+                visible: true
+            });
+        }
+    }
+    </script>
+
+
+    <div id="myMap" style="position:relative;width:80%;height:80%;left:10%;right:10%">
+    </div>
+
+    <a href="{{ url_for('users.dashboard', user=current_user.username) }}"class="btn btn-info"> Back to Dashboard</a>
+
+    {% endblock %}
+</html>

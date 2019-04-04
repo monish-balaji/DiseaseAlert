@@ -1,0 +1,140 @@
+{% extends "users/base.html" %} {% block body %}
+<div class="modal fade" id="city" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title" id="myModalLabel">Enter Location</h4>
+            </div>
+            <div class="modal-body">
+                <div class="map_canvas"></div>
+                <form id="form-body" class="form-horizontal" method="post" action="{{ url_for('users.cityview' , user = current_user.username)}}"
+                    enctype="multipart/form-data">
+
+                    <label class="control-label col-sm-2">Location</label>
+                    <div id="pac-container">
+                        <input class="form-control" id="geocomplete" name="loc_name" type="text" placeholder="Type in a location" />
+                    </div>
+                    <input type="hidden" class="form-control" name="lat" type="text" value="">
+                    <input type="hidden" class="form-control" name="lng" type="text" value="">
+
+                    <button type="submit" form="form-body" class="btn btn-success" value="Submit">Submit</button>
+
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger btn-simple" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="modal fade" id="results" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title" id="myModalLabel">What would you like to search for?</h4>
+            </div>
+            <div class="modal-body">
+                <div class="map_canvas"></div>
+                <form id="form2" class="form-horizontal" method="post" action="{{ url_for('users.viewresults' , user = current_user.username)}}"
+                    enctype="multipart/form-data">
+
+                    <label class="control-label col-sm-2">Search</label>
+                    <select name="query" id="query">   
+                        {% for input in choices%}
+                            <option  value="{{input}}">{{input}}</option>
+                        {% endfor %}
+                    </select>
+                    <button type="submit" form="form2" class="btn btn-success" value="Submit">Submit</button>
+
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger btn-simple" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container-fluid text-center main-body">
+    <div class="row content text-center">
+
+        <div class="col-sm-6 col-sm-offset-3">
+            <div class="well">
+                <img src="https://avatars.io/avatar/HASH/size" class="img-circle" height="65" width="65" alt="Avatar">
+                <h3 class="semi-bold-black">{{ user.first_name }} {{ user.last_name }}</h3>
+                <h4 class="semi-bold-black"> {{ user.role }} </h4>
+                <p class="font-lightitalic">@{{ user.username }}</p>
+
+            </div>
+        </div>
+        <div class="col-sm-6 col-sm-offset-3">
+            
+                <a href="{{ url_for('users.nearme', user=current_user.username) }}" class="btn btn-info btn-dash"
+                    data-toggle="tooltip" title="Check for outbreaks of diseases near your current location.">
+                    Outbreaks Near Me </a>
+                <span data-toggle="modal" data-target="#city">
+                    <a class="btn btn-info btn-dash" data-toggle="tooltip" title="Check for outbreaks of diseases in a particular city.">Outbreaks
+                        in a City </a>
+                </span>
+                <a href="{{ url_for('users.globalmap', user=current_user.username) }}" class="btn btn-info btn-dash"
+                    data-toggle="tooltip" title="Check for outbreaks all over the world."> Global Map </a>
+                <span data-toggle="modal" data-target="#results">
+                    <a class="btn btn-info btn-dash" data-toggle="tooltip" title="Get information about a disease.">Disease Information </a>
+                </span>
+
+
+        </div>
+    </div>
+</div>
+<script>
+    window.onload = function () {
+        getLocation();
+    };
+    function getLocation() {
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(savePosition);
+        } else {
+            x.innerHTML = "Geolocation is not supported by this browser.";
+        }
+    }
+    function savePosition(position) {
+        var latitude = position.coords.latitude
+        var longitude = position.coords.longitude;
+
+        var position =
+        {
+            'latitude': latitude,
+            'longitude': longitude
+        }
+        var url = "/dashboard/" + "{{current_user.username|safe}}"
+        $.ajax({
+            url: url,
+            type: 'POST',
+            data: JSON.stringify(position),   // converts js value to JSON string
+            contentType: 'application/json; charset=utf-8',
+            dataType: 'json',
+            async: false,
+        }).done(function (result) { console.log(result) })
+
+    }
+
+</script>
+
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD17OTqHh1iI6T_8uSGlO_0SXjymIQJGVU&libraries=places""></script>
+<script src="
+    http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"> </script> <script src="{{ url_for('static', filename='js/jquery.geocomplete.js' ) }}"></script>
+<script src="{{ url_for('static', filename='js/geocomplete.js' ) }}"></script>
+
+
+<style>
+    .pac-container {
+        padding-bottom: 12px;
+        margin-right: 12px;
+        z-index: 99999 !important;
+    }
+</style>
+{% endblock %}

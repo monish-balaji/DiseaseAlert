@@ -1,0 +1,48 @@
+{% extends "users/base.html" %} {% block body %}
+<div class="container-fluid text-center main-body">
+    <div class="row content">
+        {% if current_user.is_authenticated %}
+        <div class="col-sm-12 text-center welcome">
+            <h1> Hello {{ current_user.username }}!</h1>
+        </div>
+        {% else %}
+        <div class="col-sm-12 text-center welcome">
+            <br><br>
+            <h1> Welcome to DiseaseAlert!</h1>
+        </div>
+        <div class="col-sm-8 col-sm-offset-2 btn-group text-center">
+            <a href="{{ url_for('users.signup') }}" class="btn btn-info btn-index"> Sign up as User</a>
+            <a href="{{ url_for('users.login') }}" class="btn btn-info btn-index"> Login as User </a>
+            <a href="{{ url_for('admin.signup') }}" class="btn btn-info btn-index"> Sign up as Health Care Professional</a>
+            <a href="{{ url_for('admin.login') }}" class="btn btn-info btn-index"> Login as Health Care Professional</a>
+        </div>
+        {% endif %}
+        <div class="col-sm-12 text-center">
+            <div class="row features-bg">
+                <h2>Sign up. Get notified about epidemics. Live well. </h2>
+                <div class="col-sm-4 text-center">
+                    <div class="features">
+                        <span class="glyphicon glyphicon-map-marker"></span>
+                        <h3>Outbreaks close to you</h3>
+                        <p> View outbreaks of diseases close to your current location.</p>
+                    </div>
+                </div>
+                <div class="col-sm-4 text-center">
+                    <div class="features">
+                        <span class="glyphicon glyphicon-envelope"></span>
+                        <h3> Notifications</h3>
+                        <p> Get notified about outbreaks near you. </p>
+                    </div>
+                </div>
+                <div class="col-sm-4 text-center">
+                    <div class="features">
+                        <span class="glyphicon glyphicon-info-sign"></span>
+                        <h3> Disease Information </h3>
+                        <p> Get information such as symptoms, preventive measures for diseases. </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

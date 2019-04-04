@@ -1,0 +1,352 @@
+
+
+.admin {
+    padding-bottom:60px;
+    background-image: url("../img/bg.jpg");
+
+    /* Full height */
+    height: 100%; 
+
+    /* Center and scale the image nicely */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: auto;
+    background-attachment: fixed;
+}
+
+
+.users {
+    padding-bottom:60px;
+    background-image: url("../img/bg-users.jpg");
+
+    /* Full height */
+    height: 100%; 
+
+    /* Center and scale the image nicely */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: auto;
+    background-attachment: fixed;
+}
+html {
+    height: 100%;
+}
+.results-image {
+    width:100%; 
+}
+.navbar-admin {
+    background-color: white;
+    color: black;
+}
+
+.navbar-admin a {
+    color : black !important;
+}
+.navbar-admin a:hover{
+    color : darkgray !important;
+}
+
+.navbar-users {
+    background-color: #222;
+}
+
+.active-admin {
+    background-color: lightgray;
+}
+.btn-info {
+    background-color:#222;
+    border-color: #222;
+    margin-bottom: 0.5%;
+    margin-right:1%;
+}
+.btn-info:hover {
+    background-color: white;
+    border-color : white;
+    color: #222;
+}
+
+.btn-group{
+    margin-top: 5%;
+}
+.btn-index {
+    border-radius: 0;
+    font-family: Ubuntu-B;
+    margin: 0%;
+    width :50%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    border: 0%;
+    padding-top:30px;
+    text-align: center;
+    height: 15%;
+    font-size: 18px;
+
+}
+.btn-dash {
+    border-radius: 0;
+    font-family: Ubuntu-B;
+    margin: 0%;
+    width :50%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    border: 0%;
+    padding-top:30px;
+    text-align: center;
+    height: 15%;
+    font-size: 19px;
+
+}
+
+div.welcome h1{
+    font-size: 50px;
+}
+
+
+div.features-bg {
+    background-color: #222;
+    border-radius: 10px;
+    opacity: 0.8;
+    margin: 2%;
+    margin-top:10%;
+    min-height: 50%;
+}
+
+div.features {
+    color: white;
+    padding: 10%;
+}
+
+div.features .glyphicon {
+   margin :2%;
+   font-size: 30px; 
+}
+
+div.features p {
+    margin: 20px;
+    font-size : 20px;
+    font-family: Ubuntu-LI;
+}
+
+div.features-bg h2 {
+    font-family: Ubuntu-L;
+}
+
+.main-body {
+    min-height: 0%;
+}
+.footer-users {
+     width:100%;
+    background:  #222;;
+    color: rgb(255, 255, 255);
+    text-align: center;
+    margin-top: 5px;
+ 
+}
+
+
+.footer-admin {
+    width:100%;
+   background: white;
+   color: black;
+   text-align: center;
+
+}
+.footer-admin h5,
+.footer-admin h4,
+.footer-admin a {
+    color: black !important;
+}
+
+.page-wrap {
+    min-height: 100%;
+    /* equal to footer height */
+    margin-bottom: -90px; 
+  }
+  .page-wrap:after {
+    content: "";
+    display: block;
+  }
+  .site-footer, .page-wrap:after {
+    height: 90px; 
+  }
+
+
+#form-body {
+    padding: 2%;
+    overflow:hidden;
+    background-color: lightgray !important;
+    border-radius: 5px;
+    margin: 0%;
+}
+
+#form-title {
+    background-color: #222 !important;
+    padding: 2%;
+    margin: 0%;
+    border-radius: 5px;
+    color: white;
+}
+#form-container {
+    border-radius: 5px;
+}
+
+.modal-header h4 {
+    font-family:  Ubuntu-B;
+    color : black; 
+}
+
+h1 ,h2,h3,h4, h5{
+    font-family:  Ubuntu-B;
+    color: white;
+}
+
+a,p, input, li{
+    font-family:  Ubuntu-R;
+    font : Ubuntu-R;
+    color: white;
+}
+
+#date {
+    font-family:  Ubuntu-R;
+    font : Ubuntu-R;
+    color: black;
+}
+label, button{
+    font-family:  Ubuntu-R;
+    color: black;
+}
+
+.semi-bold-black{
+    font-family:  Ubuntu-M;
+    color: white;
+
+}
+
+.font-medium{
+    font-family:  Ubuntu-B;
+    color: white;
+
+}
+.font-lightitalic{
+    font-family:  Ubuntu-LI;
+    color: white;
+
+}
+
+.dash-header-admin{
+    background-color:white !important;
+    padding: 2px 10px 2px;
+    margin-right: 10px;
+    border-radius: 5px;
+}
+.dash-header-admin h5, h4 {
+    color : white;
+}
+.dash-body-admin {
+    background-color: lightgray !important;
+    margin-right: 10px;
+    padding: 0%;
+    border-radius: 5px;
+    margin-bottom : 20px;
+}
+.dash-body-admin a{
+    color: white;
+    margin : 10px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+.dash-body-admin a:hover{
+    color: white;
+    transition: 0.1s;
+    background-color : rgb(61, 61, 61);
+}
+.dash-body-admin a:active{
+    color: white;
+    margin : 10px;
+    transition: 0.1s;
+    box-shadow: 0;
+}
+.btn-actions {
+    background-color: #222;
+    color:white;
+}
+
+.dash-body-graph {
+    min-height: 40%;
+    background-color: white !important;
+    margin-right: 10px;
+    margin-bottom : 20px;
+    padding: 0%;
+    border-radius: 5px;
+    overflow: scroll;
+}
+.dash-body-video {
+    height: 40%;
+    background-color: lightgray !important;
+    margin-right: 10px;
+    padding: 0%;
+    border-radius: 5px;
+    margin-bottom : 20px;
+}
+.dash-element {
+   
+    padding: 0%;
+   margin: 0%;
+}
+
+.well {
+    background-color: #222 !important;
+
+}
+
+.progress {
+  
+    height: 5px;
+    margin: 9%;
+    line-height: 10px;
+}
+
+.mood-icon{
+    height: 5px;
+    margin: 5%;
+    line-height: 10px;
+    float: left;
+  }
+
+.spotify-track {
+    padding: 0%;
+}
+
+.checkbox {
+    max-height: 30%;
+    overflow: scroll;
+}
+
+.radio-label{
+    padding: 0% !important;
+    vertical-align: baseline;
+    font-family:  Ubuntu-M;
+    color: black;
+
+}
+.radio-button{
+    vertical-align: baseline;
+}
+
+.radio-middle{
+    vertical-align: middle;
+}
+
+#github-logo{
+    height: 14px;
+    width: 14px;
+}
+
+@font-face { font-family: Ubuntu-M ;  src: url(../fonts/Ubuntu-M.ttf); }
+@font-face { font-family: Ubuntu-MI ;  src: url(../fonts/Ubuntu-MI.ttf); }
+@font-face { font-family: Ubuntu-L ;  src: url(../fonts/Ubuntu-L.ttf); }
+@font-face { font-family: Ubuntu-B ;  src: url(../fonts/Ubuntu-B.ttf); }
+@font-face { font-family: Ubuntu-BI ;  src: url(../fonts/Ubuntu-BI.ttf); }
+@font-face { font-family: Ubuntu-R ;  src: url(../fonts/Ubuntu-R.ttf); }
+@font-face { font-family: Ubuntu-C ;  src: url(../fonts/Ubuntu-C.ttf); }
+@font-face { font-family: Ubuntu-RI ;  src: url(../fonts/Ubuntu-RI.ttf); }
+@font-face { font-family: Ubuntu-LI ;  src: url(../fonts/Ubuntu-LI.ttf); }
