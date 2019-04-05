@@ -10,7 +10,7 @@ from app.utils import get_plot_locations, get_current_location, get_dest_list , 
 from azure.storage.blob import BlockBlobService , ContentSettings
 
 def load_config ():
-    with open ('../config.yml') as f:
+    with open ('config.yml') as f:
         config = yaml.load(f)
         return config 
 
